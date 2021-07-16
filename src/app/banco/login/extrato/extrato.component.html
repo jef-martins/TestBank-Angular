@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="box">
+        <table class="table table-hover" *ngIf="extratos">
+            <thead>
+                <tr>
+                    <th scope="col">Transação</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let extrato of extratos">
+                    <th scope="row">{{extrato.idExtrato}}</th>
+                    <td>{{extrato.descricao}}</td>
+                    <td>{{dataFormatada(extrato.createdAt)}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div class="d-grid gap-1 d-md-flex justify-content-md-end">
+                            <button (click)="Anterior()" ngClass="btn btn-primary {{anterior}}" type="button">Anterior</button>
+                            <button (click)="Proximo()"  ngClass="btn btn-primary {{proximo}}" type="button">Próximo</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

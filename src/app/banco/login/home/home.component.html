@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-3">
+    <div class="pai">
+      <div class="filha">
+        <div class="perfil mt-4">
+          <div class="circle">
+            <img [src]="usuario.foto" class="foto" alt="foto perfil" style="border-radius: 90%;">
+          </div>
+        </div>
+        <div class="corpo">
+          <table>
+            <tbody class="text-center">
+              <tr>
+                <h6>Bem Vindo(a) {{usuario.nome}}!</h6>
+              </tr>
+              <tr>
+                <h6>Tipo de Conta: {{conta.tipoConta}}</h6>
+              </tr>
+              <tr>
+                <h6>Agencia: {{conta.agencia}}</h6>
+              </tr>
+              <tr>
+                <h6>Numero da Conta: {{conta.nConta}}</h6>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="rodape">
+          <img src="../../../assets/img/logo-best-horizontal.png" class="mb-2" alt="logo rodapé" width="400px">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-9">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand text-decoration-underline" routerLink="verSaldo">Ver Saldo</a>
+        <a class="navbar-brand text-decoration-underline" routerLink="extrato">Ver Extrato</a>
+        <a class="navbar-brand text-decoration-underline" routerLink="deposito">Depósito</a>
+        <a class="navbar-brand text-decoration-underline" routerLink="#">Pix</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!--Vazio para manter a formatação-->
+          </ul>
+          <div class="d-flex">
+            <button type="button" class="btn btn-secondary" (click)="logout()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                <path fill-rule="evenodd"
+                  d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+              </svg>
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!--Separação entre corpo e Header-->
+    <div>
+      <div class="container">
+        <div class="box">
+          <div class="row">
+            <div class="">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

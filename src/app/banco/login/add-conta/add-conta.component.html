@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="card box" style="width: 600px;">
+        <div class="alert alert-danger" role="alert" *ngIf="log">
+            Tem Campos Não Preenchidos
+        </div>
+        <img src="../../../assets/img/logo-best-horizontal.png" class="card-img-top" alt="logo">
+        <div class="card-body">
+            <h5 class="card-title">Tela de Cadastro</h5>
+            <form>
+                
+                <div class=" mt-3 mb-3">
+                    <label for="formFile" class="form-label">Escolha sua foto de perfil</label>
+                    <input (change)="convertFoto($event)" class="form-control" type="file" id="formFile">
+                </div>
+                <div class="text-center" *ngIf="usuario.foto">
+                <img [src]="usuario.foto" width="128px">
+                </div>
+                <div class="input-group mt-3 mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>
+                    </span>
+                    <input [(ngModel)]="usuario.nome" name="cpf" type="text" class="form-control"
+                        placeholder="Nome Completo" aria-label="Nome Completo" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mt-3 mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-person-badge-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z" />
+                        </svg>
+                    </span>
+                    <input [(ngModel)]="usuario.cpf" name="senha" type="text" class="form-control" placeholder="CPF"
+                        aria-label="CPF" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mt-3 mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-files" viewBox="0 0 16 16">
+                            <path
+                                d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z" />
+                        </svg>
+                    </span>
+                    <select (change)="tipoconta($event)" class="form-select" aria-label="Default select example">
+                        <option selected value="Conta Corrente">Conta Corrente</option>
+                        <option value="Conta Poupança">Conta Poupança</option>
+                        <option value="Conta Salario">Conta Salario</option>
+                    </select>
+                </div>
+                <div class="input-group mt-3 mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-lock-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+                        </svg>
+                    </span>
+                    <input [(ngModel)]="usuario.senha" name="senha" type="password" class="form-control"
+                        placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1">
+                </div>
+                <label class="form-check-label link-danger" *ngIf="versenha">
+                    Senha não coincide
+                </label>
+                <div class="input-group mt-3 mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-lock-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+                        </svg>
+                    </span>
+                    <input [(ngModel)]="repete" (keyup)="verSenha()" name="repete" type="password" class="form-control"
+                        placeholder="Repete Senha" aria-label="Senha" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="check" (change)="checkBox()"
+                        name="termos" id="flexCheckDefault">
+                    <label class="form-check-label link-{{cor}}" for="flexCheckDefault">
+                        Aceito os termos
+                    </label>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button (click)="cancelar()" class="btn btn-danger" type="button">Cancelar</button>
+                    <button (click)="save()" class="btn btn-primary" type="button">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

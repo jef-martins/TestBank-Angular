@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="card box" style="width: 600px;">
+        <div class="alert alert-danger" role="alert" *ngIf="log">
+            Usuario ou Senha estão incorretos!
+        </div>
+        <br>
+        <img src="../../../assets/img/logo-best-horizontal.png" class="card-img-top" alt="logo">
+        <div class="card-body">
+            <h5 class="card-title">Login</h5>
+            <form>
+                <div class="input-group mt-3 mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>
+                    </span>
+                    <input [(ngModel)]="usuario.cpf" name="cpf" type="text" class="form-control" placeholder="CPF"
+                        aria-label="CPF" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mt-3 mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-lock-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+                        </svg>
+                    </span>
+                    <input [(ngModel)]="usuario.senha" (keypress)="enter($event)" name="senha" type="password" class="form-control"
+                        placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1">
+                </div>
+                <a routerLink="/addConta" class="link-primary text-decoration-none mb-3 mt-3">Criar Conta</a>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button (click)="logar()" class="btn btn-primary" type="button">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
